@@ -4,6 +4,7 @@ import com.tcs.archive.model.GoaTable;
 import com.tcs.archive.model.GoaTempTable;
 import com.tcs.archive.repository.GoaReposiotry;
 import com.tcs.archive.repository.GoaTempRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ public class ArchiveService {
     public GoaTable saveGoaTable(GoaTable goaTable){
         return goaReposiotry.save(goaTable);
     }
-
+    @Transactional
     public void transferData(){
         List<GoaTable> goaTablesDetails = goaReposiotry.findAll();
         for(GoaTable goaTable:goaTablesDetails){
